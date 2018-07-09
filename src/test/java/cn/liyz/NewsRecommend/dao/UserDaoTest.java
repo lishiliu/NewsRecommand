@@ -1,14 +1,13 @@
-package cn.liyz.NewsRecommand.dao;
+package cn.liyz.NewsRecommend.dao;
 
-import cn.liyz.NewsRecommand.base.BaseTest;
-import cn.liyz.NewsRecommand.entity.User;
+import cn.liyz.NewsRecommend.base.BaseTest;
+import cn.liyz.NewsRecommend.entity.User;
+import cn.liyz.NewsRecommend.mapper.UserMapper;
 import org.junit.Assert;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.List;
 
 /**
  * Created by liyan on 2018/7/9.
@@ -17,11 +16,11 @@ import java.util.List;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class UserDaoTest extends BaseTest {
     @Autowired
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     @Test
     public void selectUserId() {
-        User user  = userDao.selectUserById(1);
+        User user  = userMapper.selectUserById(1);
         Assert.assertTrue(user != null);
     }
 }

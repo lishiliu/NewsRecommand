@@ -7,7 +7,7 @@
 
     <name>News Maven Webapp</name>
     <groupId>cn.liyz</groupId>
-    <artifactId>NewsRecommand</artifactId>
+    <artifactId>NewsRecommend</artifactId>
     <version>1.0</version>
     <url>http://maven.apache.org</url>
 
@@ -23,7 +23,7 @@
     </properties>
 
     <build>
-        <finalName>NewsRecommand</finalName>
+        <finalName>NewsRecommend</finalName>
         <resources>
             <resource>
                 <directory>src/main/java</directory>

@@ -1,8 +1,8 @@
-package cn.liyz.NewsRecommand.controller;
+package cn.liyz.NewsRecommend.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cn.liyz.NewsRecommand.entity.User;
-import cn.liyz.NewsRecommand.service.impl.UserService;
+import cn.liyz.NewsRecommend.entity.User;
+import cn.liyz.NewsRecommend.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

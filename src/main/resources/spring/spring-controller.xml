@@ -32,5 +32,9 @@
     </bean>
 
     <!-- 4.扫描web相关的bean -->
-    <context:component-scan base-package="cn.liyz.NewsRecommand.controller"/>
+    <context:component-scan base-package="cn.liyz.NewsRecommend.controller"/>
+
+    <!-- component-scan自动搜索@Component , @Controller , @Service , @Repository等标注的类 -->
+    <context:component-scan base-package="cn.liyz.NewsRecommend"/>
+
 </beans>

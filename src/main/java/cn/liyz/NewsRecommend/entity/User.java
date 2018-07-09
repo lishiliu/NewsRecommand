@@ -1,9 +1,9 @@
-package cn.liyz.NewsRecommand.entity;
+package cn.liyz.NewsRecommend.entity;
 
 import java.util.Date;
 
 /**
- * Created by xiaoyanger on 2017/12/15.
+ * Created by liyanzhao on 2018/07/09.
  */
 public class User {
     private long id;

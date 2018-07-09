@@ -1,6 +1,6 @@
-package cn.liyz.NewsRecommand.service;
+package cn.liyz.NewsRecommend.service;
 
-import cn.liyz.NewsRecommand.entity.User;
+import cn.liyz.NewsRecommend.entity.User;
 
 /**
  * Created by xiaoyanger on 2017/12/15.

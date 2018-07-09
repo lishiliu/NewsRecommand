@@ -1,8 +1,8 @@
-package cn.liyz.NewsRecommand.service.impl;
+package cn.liyz.NewsRecommend.service.impl;
 
-import cn.liyz.NewsRecommand.dao.UserDao;
-import cn.liyz.NewsRecommand.entity.User;
-import cn.liyz.NewsRecommand.service.IUserService;
+import cn.liyz.NewsRecommend.dao.UserDao;
+import cn.liyz.NewsRecommend.entity.User;
+import cn.liyz.NewsRecommend.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
