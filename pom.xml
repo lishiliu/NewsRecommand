@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
 
-    <name>LabManager Maven Webapp</name>
-    <groupId>cn.charlesxu</groupId>
-    <artifactId>LabManager</artifactId>
+    <name>News Maven Webapp</name>
+    <groupId>cn.liyz</groupId>
+    <artifactId>NewsRecommand</artifactId>
     <version>1.0</version>
     <url>http://maven.apache.org</url>
 
@@ -23,7 +23,7 @@
     </properties>
 
     <build>
-        <finalName>LabManager</finalName>
+        <finalName>NewsRecommand</finalName>
         <resources>
             <resource>
                 <directory>src/main/java</directory>

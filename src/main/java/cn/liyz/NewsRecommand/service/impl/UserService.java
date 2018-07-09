@@ -1,8 +1,8 @@
-package cn.charlesxu.LabManager.service.impl;
+package cn.liyz.NewsRecommand.service.impl;
 
-import cn.charlesxu.LabManager.dao.UserDao;
-import cn.charlesxu.LabManager.entity.User;
-import cn.charlesxu.LabManager.service.IUserService;
+import cn.liyz.NewsRecommand.dao.UserDao;
+import cn.liyz.NewsRecommand.entity.User;
+import cn.liyz.NewsRecommand.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

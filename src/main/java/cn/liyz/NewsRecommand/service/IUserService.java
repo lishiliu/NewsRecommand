@@ -1,6 +1,6 @@
-package cn.charlesxu.LabManager.service;
+package cn.liyz.NewsRecommand.service;
 
-import cn.charlesxu.LabManager.entity.User;
+import cn.liyz.NewsRecommand.entity.User;
 
 /**
  * Created by xiaoyanger on 2017/12/15.

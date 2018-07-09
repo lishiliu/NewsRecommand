@@ -1,8 +1,8 @@
-package cn.charlesxu.LabManager.controller;
+package cn.liyz.NewsRecommand.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import cn.charlesxu.LabManager.entity.User;
-import cn.charlesxu.LabManager.service.impl.UserService;
+import cn.liyz.NewsRecommand.entity.User;
+import cn.liyz.NewsRecommand.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

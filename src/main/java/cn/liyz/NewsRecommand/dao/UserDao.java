@@ -1,6 +1,6 @@
-package cn.charlesxu.LabManager.dao;
+package cn.liyz.NewsRecommand.dao;
 
-import cn.charlesxu.LabManager.entity.User;
+import cn.liyz.NewsRecommand.entity.User;
 
 /**
  * Created by xiaoyanger on 2017/12/15.
