@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.liyz.NewsRecommend.mapper.KeyTypeMapper">
+    <resultMap id="BaseResultMap" type="cn.liyz.NewsRecommend.entity.KeyType">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="key_type" jdbcType="VARCHAR" property="keyType"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="lastmodify" jdbcType="TIMESTAMP" property="lastmodify"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,key_type,createtime, lastmodify
+    </sql>
+
+    <insert id="insert" parameterType="cn.liyz.NewsRecommend.entity.KeyType">
+        insert into t_key_type (id, key_type,createtime, lastmodify
+        )
+        values (#{id,jdbcType=INTEGER}, #{keyType,jdbcType=VARCHAR},#{createtime,jdbcType=TIMESTAMP},#{lastmodify,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from t_key_type
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="update" parameterType="cn.liyz.NewsRecommend.entity.KeyType">
+        update t_key_type
+        <set>
+            <if test="keyType != null">
+                key_type = #{keyType,jdbcType=VARCHAR},
+            </if>
+            <if test="createtime != null">
+                createtime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="lastmodify != null">
+                lastmodify = #{lastmodify,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_key_type
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectByKeyType" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_key_type
+        WHERE keyType = #{keyType}
+    </select>
+
+</mapper>

@@ -1,6 +1,7 @@
 package cn.liyz.NewsRecommend.mapper;
 
 import cn.liyz.NewsRecommend.entity.User;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 /**
@@ -26,7 +27,7 @@ public interface UserMapper {
     /**
      * 修改用户信息
      */
-    User update(User user);
+    int update(User user);
 
     /**
      * 根据id查询用户信息
@@ -37,4 +38,13 @@ public interface UserMapper {
      * 根据用户名查询用户信息
      */
     User selectByUsername(String username);
+
+    /**
+     * 根据用户名和密码查询用户信息
+     */
+    User selectUserByUsernameAndPassword(@Param("username") String username,@Param("password") String password);
+
+    int selectCountByUserName(@Param("username") String username);
+
+    int selectCountByEmail(@Param("email") String email);
 }

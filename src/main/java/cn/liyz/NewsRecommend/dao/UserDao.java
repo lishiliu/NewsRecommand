@@ -24,7 +24,7 @@ public interface UserDao {
     /**
      * 修改用户信息
      */
-    User update(User user);
+    int update(User user);
 
     /**
      * 根据id查询用户信息
@@ -35,4 +35,13 @@ public interface UserDao {
      * 根据用户名查询用户信息
      */
     User selectByUsername(String username);
+
+    /**
+     * 根据用户名和密码查询用户信息
+     */
+    User selectUserByUsernameAndPassword(String username,String password);
+
+    int selectCountByUserName(String username);
+
+    int selectCountByEmail(String email);
 }

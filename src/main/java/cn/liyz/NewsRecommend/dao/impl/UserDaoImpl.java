@@ -15,19 +15,19 @@ public class UserDaoImpl implements UserDao {
     private UserMapper userMapper;
 
     public int insert(User user) {
-        return 0;
+        return userMapper.insert(user);
     }
 
     public int deleteByUsername(String username) {
-        return 0;
+        return userMapper.deleteByUsername(username);
     }
 
     public int deleteById(int id) {
-        return 0;
+        return userMapper.deleteById(id);
     }
 
-    public User update(User user) {
-        return null;
+    public int update(User user) {
+        return userMapper.update(user);
     }
 
     public User selectUserById(long id) {
@@ -35,6 +35,20 @@ public class UserDaoImpl implements UserDao {
     }
 
     public User selectByUsername(String username) {
-        return null;
+        return userMapper.selectByUsername(username);
     }
+
+    public User selectUserByUsernameAndPassword(String username, String password) {
+        return userMapper.selectUserByUsernameAndPassword(username,password);
+    }
+
+    public int selectCountByUserName(String username) {
+        return userMapper.selectCountByUserName(username);
+    }
+
+    public int selectCountByEmail(String email) {
+        return userMapper.selectCountByEmail(email);
+    }
+
+
 }
