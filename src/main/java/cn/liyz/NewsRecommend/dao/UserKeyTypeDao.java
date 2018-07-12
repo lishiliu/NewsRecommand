@@ -12,8 +12,8 @@ public interface UserKeyTypeDao {
 
     int insert(UserKeyType userKeyType);
 
-    int delete(@Param("userId") int userId, @Param("keyTypeId") int keyTypeId);
+    int delete( int userId,  int keyTypeId);
 
-    List<UserKeyType> selectByUserId(@Param("userId") int userId);
+    List<UserKeyType> selectByUserId( int userId);
 
 }

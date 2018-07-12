@@ -3,6 +3,8 @@ package cn.liyz.NewsRecommend.dao;
 import cn.liyz.NewsRecommend.entity.KeyType;
 import cn.liyz.NewsRecommend.entity.User;
 
+import java.util.List;
+
 /**
  * Created by liyan on 2018/7/10.
  */
@@ -31,4 +33,9 @@ public interface KeyTypeDao {
      * 根据keyType查询
      */
     KeyType selectByKeyType(String keyType);
+
+    /**
+     * 获取所有KeyType
+     */
+    List<KeyType> selectAllKeyType();
 }

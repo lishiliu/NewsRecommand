@@ -15,7 +15,9 @@ public interface UserService {
 
     int addCustomLabel(String username,String customLabel);
 
-    int addKeyType(List<String> keyTypeList,String username);
+    int addKeyType(List<String> keyTypeList,String username,String customLabel);
+
+    List<String> getAllLabel(String username);
 
     int updatePassword(String username, String oldPassword, String newPassword);
 

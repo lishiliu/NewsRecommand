@@ -53,7 +53,13 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM t_key_type
-        WHERE keyType = #{keyType}
+        WHERE key_type = #{keyType}
+    </select>
+
+    <select id="selectAllKeyType" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_key_type
     </select>
 
 </mapper>

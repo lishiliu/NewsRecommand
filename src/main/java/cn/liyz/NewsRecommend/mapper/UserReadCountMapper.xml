@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.liyz.NewsRecommend.mapper.UserReadCountMapper">
+    <resultMap id="BaseResultMap" type="cn.liyz.NewsRecommend.entity.UserReadCount">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="user_id" jdbcType="INTEGER" property="userId"/>
+        <result column="news_id" jdbcType="INTEGER" property="newsId"/>
+        <result column="read_count" jdbcType="INTEGER" property="readCount"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,user_id,news_id,read_count
+    </sql>
+
+    <insert id="insert" parameterType="cn.liyz.NewsRecommend.entity.UserReadCount">
+        insert into t_user_read_count (id,user_id,news_id,read_count )
+        values (#{id,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{newsId,jdbcType=INTEGER},#{readCount,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <update id="update" parameterType="cn.liyz.NewsRecommend.entity.UserReadCount">
+        update t_user_read_count
+        <set>
+            <if test="readCount != null">
+                read_count = #{readCount,jdbcType=VARCHAR}
+            </if>
+        </set>
+        where user_id = #{userId} AND news_id =#{newsId}
+    </update>
+
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_user_read_count
+        WHERE user_id = #{userId}
+    </select>
+
+
+    <select id="selectTopByUserId" resultMap="BaseResultMap">
+       select *from(SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_user_read_count
+        WHERE user_id = #{userId})
+        as urc
+        ORDER BY read_count desc
+        limit 2;
+    </select>
+
+</mapper>

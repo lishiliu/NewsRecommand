@@ -28,6 +28,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    /**
+     * 登录接口
+     * @param user
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public @ResponseBody
     Map<String, Object> login(@RequestBody User user, HttpSession session) {
@@ -42,6 +48,12 @@ public class UserController {
         return modelMap;
     }
 
+    /**
+     * 注册接口
+     * @param user
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/addUser", method = RequestMethod.POST)
     public @ResponseBody Map<String, Object> addUser(@RequestBody User user, HttpServletRequest request) {
         int result = userService.addUser(user);//调用service层进行注册
@@ -58,9 +70,14 @@ public class UserController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/addCustomLabel", method = RequestMethod.POST)
-    public @ResponseBody Map<String, Object> addCustomLabel(@RequestBody Map<String, Object> map) {
-        int result = userService.addCustomLabel(map.get("usernmae").toString(),map.get("customLabel").toString());//调用service层进行注册
+    /**
+     * 注册完之后标签选择接口
+     * @param
+     * @return
+     */
+    @RequestMapping(value = "/addKeyType", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> addKeyType(@RequestBody List<String> keyTypeList,String username,String customLabel) {
+        int result = userService.addKeyType(keyTypeList,username,customLabel);//调用service层进行注册
         Map<String, Object> modelMap = new HashMap<String, Object>();
         if (result > 0) {
             modelMap.put("result", "success");
@@ -70,16 +87,17 @@ public class UserController {
         return modelMap;
     }
 
-    @RequestMapping(value = "/addCustomLabel", method = RequestMethod.POST)
-    public @ResponseBody Map<String, Object> addKeyType(@RequestBody List<String> keyTypeList,String username) {
-        int result = userService.addKeyType(keyTypeList,username);//调用service层进行注册
+    /**
+     * 获取用户所选新闻关键字接口
+     * @param username
+     * @return
+     */
+    @RequestMapping(value = "/getAllLabel", method = RequestMethod.POST)
+    public @ResponseBody Map<String, Object> getAllLabel(@RequestBody String username) {
+        List<String> labels = userService.getAllLabel(username);//调用service层进行注册
         Map<String, Object> modelMap = new HashMap<String, Object>();
-        if (result > 0) {
-            modelMap.put("result", "success");
-        } else {
-            modelMap.put("result", "fail");
-        }
+        modelMap.put("result", "success");
+        modelMap.put("labels", labels);
         return modelMap;
     }
-
 }

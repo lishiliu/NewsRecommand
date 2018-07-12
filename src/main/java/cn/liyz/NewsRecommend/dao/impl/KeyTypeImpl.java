@@ -7,6 +7,8 @@ import cn.liyz.NewsRecommend.mapper.KeyTypeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Created by liyan on 2018/7/10.
  */
@@ -34,4 +36,10 @@ public class KeyTypeImpl implements KeyTypeDao {
     public KeyType selectByKeyType(String keyType) {
         return keyTypeMapper.selectByKeyType(keyType);
     }
+
+    public List<KeyType> selectAllKeyType() {
+        return keyTypeMapper.selectAllKeyType();
+    }
+
+
 }

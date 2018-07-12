@@ -11,16 +11,13 @@ import cn.liyz.NewsRecommend.service.tools.MailSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * Created by xiaoyanger on 2017/12/15.
  */
 @Service
-public class UserService implements cn.liyz.NewsRecommend.service.UserService {
+public class UserServiceImpl implements cn.liyz.NewsRecommend.service.UserService {
 
     @Autowired
     private UserDao userDao;
@@ -69,7 +66,7 @@ public class UserService implements cn.liyz.NewsRecommend.service.UserService {
         return result;
     }
 
-    public int addKeyType(List<String> keyTypeList, String username) {
+    public int addKeyType(List<String> keyTypeList, String username,String customLabel) {
         User user=userDao.selectByUsername(username);
         int userId=(int)user.getId();
         UserKeyType userKeyType=new UserKeyType();
@@ -79,9 +76,23 @@ public class UserService implements cn.liyz.NewsRecommend.service.UserService {
             KeyType keyType=keyTypeDao.selectByKeyType(keyTypeList.get(i));
              int keyTypeId=keyType.getId();
              userKeyType.setKeyTypeId(keyTypeId);
-             result=userKeyTypeDao.insert(userKeyType);
+             userKeyTypeDao.insert(userKeyType);
         }
+        user.setCustomLabel(customLabel);
+        result=userDao.update(user);
         return result ;
+    }
+
+    public List<String> getAllLabel(String username) {
+        User user=userDao.selectByUsername(username);
+        List<UserKeyType> userKeyTypes=userKeyTypeDao.selectByUserId((int)user.getId());
+        List<String> keyTypes=new ArrayList<String>();
+        for(UserKeyType userKeyType:userKeyTypes){
+            String keyType=keyTypeDao.selectById(userKeyType.getKeyTypeId()).getKeyType();
+            keyTypes.add(keyType);
+        }
+        keyTypes.add(user.getCustomLabel());
+        return keyTypes;
     }
 
     public int updatePassword(String username, String oldPassword, String newPassword) {
@@ -119,7 +130,7 @@ public class UserService implements cn.liyz.NewsRecommend.service.UserService {
         mailInfo.setPassword("newssystem123@");//您的邮箱密码
         mailInfo.setFromAddress("newssystem12@163.com");
         mailInfo.setToAddress(email);
-        mailInfo.setSubject("新闻动态验证码");
+        mailInfo.setSubject("飞讯新闻动态验证码");
         mailInfo.setContent(codeNum);
         //这个类主要来发送邮件
         MailSender sms = new MailSender();

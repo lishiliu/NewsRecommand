@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.liyz.NewsRecommend.mapper.NewsMapper">
+    <resultMap id="BaseResultMap" type="cn.liyz.NewsRecommend.entity.News">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="author" jdbcType="VARCHAR" property="author"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="img" jdbcType="VARCHAR" property="img"/>
+        <result column="reading_amount" jdbcType="INTEGER" property="readingAmount"/>
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime"/>
+        <result column="lastmodify" jdbcType="TIMESTAMP" property="lastmodify"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,title,author,content,img,reading_amount,createtime,lastmodify
+    </sql>
+
+    <insert id="insert" parameterType="cn.liyz.NewsRecommend.entity.News">
+        insert into t_news (id,title,author,content,img,reading_amount,createtime,lastmodify )
+        values (#{id,jdbcType=INTEGER},#{title,jdbcType=VARCHAR},#{author,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},
+                #{img,jdbcType=VARCHAR},#{readingAmount,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP},#{lastmodify,jdbcType=TIMESTAMP}
+        )
+    </insert>
+
+    <select id="selectAllNews" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_news
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_news
+        WHERE id = #{id}
+    </select>
+
+
+    <select id="selectByRequest" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_news
+        WHERE
+        <if test="sname!=null">
+             content like '%${sname}%'  //判断出条件  拼接sql OR title like '%${sname}%'
+        </if>
+    </select>
+
+</mapper>

@@ -4,6 +4,8 @@ import cn.liyz.NewsRecommend.entity.KeyType;
 import cn.liyz.NewsRecommend.entity.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by liyan on 2018/7/10.
  */
@@ -34,4 +36,8 @@ public interface KeyTypeMapper {
      */
     KeyType selectByKeyType(String keyType);
 
+    /**
+     * 获取所有KeyType
+     */
+    List<KeyType> selectAllKeyType();
 }
