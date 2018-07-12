@@ -1,6 +1,6 @@
 package cn.liyz.NewsRecommend.mapper;
 
-import cn.liyz.NewsRecommend.entity.UserKeyType;
+import cn.liyz.NewsRecommend.entity.NewsType;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
@@ -12,9 +12,9 @@ import java.util.List;
 @Component
 public interface NewsTypeMapper {
 
-    int insert(UserKeyType userKeyType);
+    int insert(NewsType newsType);
 
-    int delete(@Param("newsId") int userId, @Param("typeId") int keyTypeId);
+    int delete(@Param("newsId") int userId, @Param("typeId") int typeId);
 
-    List<UserKeyType> selectByTypeId(@Param("userId") int userId);
+    List<NewsType> selectByTypeId(@Param("typeId") int typeId);
 }

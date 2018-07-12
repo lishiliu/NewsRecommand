@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.liyz.NewsRecommend.mapper.NewsTypeMapper">
+    <resultMap id="BaseResultMap" type="cn.liyz.NewsRecommend.entity.NewsType">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="news_id" jdbcType="INTEGER" property="newsId"/>
+        <result column="type_id" jdbcType="INTEGER" property="typeId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id,news_id,type_id
+    </sql>
+
+    <insert id="insert" parameterType="cn.liyz.NewsRecommend.entity.NewsType">
+        insert into t_news_type (id,news_id,type_id)
+        values (#{id,jdbcType=INTEGER},#{newsId,jdbcType=INTEGER},#{typeId,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        delete from t_news_type
+        where news_id = #{newsId,jdbcType=INTEGER} And type_id=#{typeId,jdbcType=INTEGER}
+    </delete>
+
+    <select id="selectByUserId" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM t_news_type
+        WHERE type_id = #{typeId}
+    </select>
+
+</mapper>
